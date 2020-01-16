@@ -1,9 +1,5 @@
-const { Router } = require('express');
-const axios = require('axios');
-const routes = Router();
-const Dev = require('./models/Dev');
-
-routes.post( '/devs', async (req, res) =>{
+module.exports = {
+async store(req, res){
     const { github_username, techs, longitude, latitude} = req.body;
 
     const response = await axios.get(`https://api.github.com/users/${github_username}`);
@@ -29,6 +25,5 @@ routes.post( '/devs', async (req, res) =>{
     })
 
     return res.json(dev);
-})
-
-module.exports = routes;
+    }
+};
