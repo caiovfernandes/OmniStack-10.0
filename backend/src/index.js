@@ -1,18 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const routes = require('./routes')
 
 const app = express();
 
-mongoose.connect('mongodb+srv://omnistack:<password>@cluster0-zpcmd.mongodb.net/week10?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://omnistack:<>@cluster0-zpcmd.mongodb.net/week10?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-app.get('/', (req,res) => {
-    return res.send('Hello bb')
-});
+app.use(routes);
 
 app.listen(3000);
